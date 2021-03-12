@@ -1,0 +1,29 @@
+{
+    "Account": {
+        "BSC": [
+            "0xAC57720c15C4FA1122d340Cb94df69F561292ad9"
+        ],
+        "Ont": [
+            "AbhmgWWCuLtWEXPF3voqJseCAR5XFu1YG1"
+        ],
+        "Zil": [
+            "zil1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq9yf6pz"
+        ]
+    },
+    "Threshold": {
+        "BSC": 100,
+        "Ont": 100
+    },
+    "Node": {
+        "BSC": [
+            "https://data-seed-prebsc-1-s1.binance.org:8545/",
+            "https://data-seed-prebsc-2-s1.binance.org:8545/"
+        ],
+        "Ont": [
+            "http://polaris2.ont.io:20336"
+        ],
+        "Zil": [
+            "https://api.zilliqa.com"
+        ]
+    }
+}
