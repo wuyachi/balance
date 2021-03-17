@@ -7,6 +7,7 @@ type Account struct {
 	Heco []string
 	Ont  []string
 	Zil  []string
+	Neo  []string
 }
 
 // Threshold ...
@@ -16,6 +17,7 @@ type Threshold struct {
 	Heco uint
 	Ont  uint
 	Zil  uint
+	Neo  uint
 }
 
 // Node ...
@@ -25,6 +27,7 @@ type Node struct {
 	Heco []string
 	Ont  []string
 	Zil  []string
+	Neo  []string
 }
 
 // Config ...

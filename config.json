@@ -8,11 +8,15 @@
         ],
         "Zil": [
             "zil1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq9yf6pz"
+        ],
+        "Neo": [
+            "ALjgBt3QdfoENa11e9yToy3bn16b685EZS"
         ]
     },
     "Threshold": {
         "BSC": 100,
-        "Ont": 100
+        "Ont": 100,
+        "Neo": 1
     },
     "Node": {
         "BSC": [
@@ -24,6 +28,9 @@
         ],
         "Zil": [
             "https://api.zilliqa.com"
+        ],
+        "Neo": [
+            "http://seed1.ngd.network:10332"
         ]
     }
 }
