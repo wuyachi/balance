@@ -59,11 +59,11 @@ func (w *Neo) Start() (err error) {
 				log.Printf("[%s] GetBalance err:%v", w.chain, err)
 				continue
 			}
-			if uint(gasBalance) <= w.threshold {
-				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%d, threshold:%d", w.chain, account, uint(gasBalance), w.threshold))
+			if gasBalance <= float64(w.threshold) {
+				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%v, threshold:%d", w.chain, account, gasBalance, w.threshold))
 				continue
 			}
-			log.Printf("[%s] account %s: balance:%d threshold:%d", w.chain, account, uint(gasBalance), w.threshold)
+			log.Printf("[%s] account %s: balance:%v threshold:%d", w.chain, account, gasBalance, w.threshold)
 		}
 		time.Sleep(time.Second)
 
