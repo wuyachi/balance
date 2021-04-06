@@ -1,0 +1,47 @@
+{
+    "Account": {
+        "Eth": [
+            "0x7a1979f8dc3c1e25f506c77c4c0dd0c2113b6cd8",
+            "0x8c5e8eb7eb33d61d1e3c6e21fbc2fca6bd2f2d86"
+        ],
+        "Heco": [
+            "0x7a1979f8dc3c1e25f506c77c4c0dd0c2113b6cd8",
+            "0x8c5e8eb7eb33d61d1e3c6e21fbc2fca6bd2f2d86"
+        ],
+        "BSC": [
+            "0xa3c419D2b37105A4ebE4f42698d220E59295a190"
+        ],
+        "Neo": [
+            "ALjgBt3QdfoENa11e9yToy3bn16b685EZS"
+        ],
+        "Ont": [
+            "AM5F45WQyVSCYVpVbu8RK6cZZgk1GdDg2Q"
+        ]
+    },
+    "Threshold": {
+        "Eth": 100000000000000000,
+        "Heco": 100000000000000000,
+        "BSC": 100000000000000000,
+        "Neo": 1,
+        "Ont": 1000000000
+    },
+    "Node": {
+        "BSC": [
+            "https://bsc-dataseed1.defibit.io/",
+            "https://bsc-dataseed.binance.org/",
+            "https://bsc-dataseed1.ninicoin.io/"
+        ],
+        "Heco": [
+            "https://http-mainnet.hecochain.com"
+        ],
+        "Eth": [
+            "http://onto-eth.ont.io:10331"
+        ],
+        "Neo": [
+            "http://seed1.ngd.network:10332"
+        ],
+        "Ont": [
+            "http://dappnode1.ont.io:20336"
+        ]
+    }
+}
