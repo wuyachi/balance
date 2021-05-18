@@ -21,6 +21,10 @@
             "0x680766d06024619425b5a8feded05c2032932317",
             "0x0da171a973608cad5bb78585b2ae5373fad2c483"
         ],
+        "OK": [
+            "0x0da171a973608cad5bb78585b2ae5373fad2c483",
+            "0xffca5f560be8ebabfe19cd8a6150f8978eb560df"
+        ],
         "Neo": [
             "ALjgBt3QdfoENa11e9yToy3bn16b685EZS"
         ],
@@ -33,7 +37,8 @@
         "Heco": 100000000000000000,
         "BSC": 100000000000000000,
         "Neo": 1,
-        "Ont": 1000000000
+        "Ont": 1000000000,
+        "OK": 10000000000000000
     },
     "Node": {
         "BSC": [
@@ -46,6 +51,9 @@
         ],
         "Eth": [
             "http://onto-eth.ont.io:10331"
+        ],
+        "OK": [
+            "https://exchainrpc.okex.org/"
         ],
         "Neo": [
             "http://seed1.ngd.network:10332"

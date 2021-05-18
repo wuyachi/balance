@@ -5,6 +5,7 @@ type Account struct {
 	Eth  []string
 	BSC  []string
 	Heco []string
+	OK   []string
 	Ont  []string
 	Zil  []string
 	Neo  []string
@@ -18,6 +19,7 @@ type Threshold struct {
 	Ont  uint
 	Zil  uint
 	Neo  uint
+	OK   uint
 }
 
 // Node ...
@@ -25,6 +27,7 @@ type Node struct {
 	Eth  []string
 	BSC  []string
 	Heco []string
+	OK   []string
 	Ont  []string
 	Zil  []string
 	Neo  []string
