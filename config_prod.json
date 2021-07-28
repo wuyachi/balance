@@ -25,6 +25,10 @@
             "0x0da171a973608cad5bb78585b2ae5373fad2c483",
             "0xffca5f560be8ebabfe19cd8a6150f8978eb560df"
         ],
+        "Polygon": [
+            "0xE5998e2879acCc23B1f0cF47D3D698496DAf45Fa",
+            "0x8483357982aa3ad21fa4f115bb4c75e6bbe507ee"
+        ],
         "Neo": [
             "ALjgBt3QdfoENa11e9yToy3bn16b685EZS"
         ],
@@ -38,6 +42,7 @@
         "BSC": 100000000000000000,
         "Neo": 1,
         "Ont": 1000000000,
+        "Polygon": 500000000000000000,
         "OK": 10000000000000000
     },
     "Node": {
@@ -54,6 +59,9 @@
         ],
         "OK": [
             "https://exchainrpc.okex.org/"
+        ],
+        "Polygon": [
+            "http://124.156.210.161:8545"
         ],
         "Neo": [
             "http://seed1.ngd.network:10332"
