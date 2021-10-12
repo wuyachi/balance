@@ -7,6 +7,7 @@ type Account struct {
 	Heco    []string
 	Polygon []string
 	OK      []string
+	Arb     []string
 	Ont     []string
 	Zil     []string
 	Neo     []string
@@ -22,6 +23,7 @@ type Threshold struct {
 	Zil     uint
 	Neo     uint
 	OK      uint
+	Arb     uint
 }
 
 // Node ...
@@ -30,6 +32,7 @@ type Node struct {
 	BSC     []string
 	Heco    []string
 	OK      []string
+	Arb     []string
 	Ont     []string
 	Zil     []string
 	Neo     []string

@@ -97,6 +97,16 @@ func watch(ctx *cli.Context) (err error) {
 			}
 		})
 	}
+	if len(conf.Account.Arb) > 0 {
+		eth := watchPkg.NewEth(wctx, cancelFunc, "Arb", conf.Node.Arb, conf.Account.Arb, conf.Threshold.Arb)
+		eth.SetAlarm(onAlarm)
+		util.GoFunc(&wg, func() {
+			err := eth.Start()
+			if err != nil {
+				log.Printf("Arb watcher quits:%v", err)
+			}
+		})
+	}
 
 	if len(conf.Account.Ont) > 0 {
 		ont := watchPkg.NewOnt(wctx, cancelFunc, "Ont", conf.Node.Ont, conf.Account.Ont, conf.Threshold.Ont)

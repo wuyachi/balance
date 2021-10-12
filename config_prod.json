@@ -25,6 +25,10 @@
             "0x0da171a973608cad5bb78585b2ae5373fad2c483",
             "0xffca5f560be8ebabfe19cd8a6150f8978eb560df"
         ],
+        "Arb": [
+            "0xdb7e0850cd3c59313dee903a6c7a862499621bef",
+            "0x3ce0372afcd3e44ccbf1378a68bcd83cafd25530"
+        ],
         "Polygon": [
             "0xE5998e2879acCc23B1f0cF47D3D698496DAf45Fa",
             "0x8483357982aa3ad21fa4f115bb4c75e6bbe507ee",
@@ -45,7 +49,8 @@
         "Neo": 1,
         "Ont": 1000000000,
         "Polygon": 500000000000000000,
-        "OK": 10000000000000000
+        "OK": 10000000000000000,
+        "Arb": 10000000000000000
     },
     "Node": {
         "BSC": [
@@ -61,6 +66,9 @@
         ],
         "OK": [
             "https://exchainrpc.okex.org/"
+        ],
+        "Arb": [
+            "https://arb1.arbitrum.io/rpc"
         ],
         "Polygon": [
             "http://124.156.210.161:8545"
