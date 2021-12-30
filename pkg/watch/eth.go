@@ -2,8 +2,12 @@ package watch
 
 import (
 	"context"
+	"encoding/hex"
 	"fmt"
+	"github.com/ethereum/go-ethereum"
 	"log"
+	"math/big"
+	"strings"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -47,7 +51,7 @@ func (w *Eth) SetAlarm(onAlarm func(string)) {
 }
 
 // Start ...
-func (w *Eth) Start() (err error) {
+func (w *Eth) Start(tokens ...string) (err error) {
 	if w.onAlarm == nil {
 		err = fmt.Errorf("[%s] alarm not set", w.chain)
 		return
@@ -60,10 +64,21 @@ func (w *Eth) Start() (err error) {
 		client := w.clients[w.i%len(w.clients)]
 
 		for _, account := range w.accounts {
-			balance, err := client.BalanceAt(w.ctx, account, nil)
-			if err != nil {
-				log.Printf("[%s] BalanceAt err:%v", w.chain, err)
-				continue
+			var balance *big.Int
+			if len(tokens) > 0 {
+				msg := getBalanceMsg(common.HexToAddress(tokens[0]), account)
+				balanceByte, err := client.CallContract(context.Background(), msg, nil)
+				if err != nil {
+					log.Printf("[%s] BalanceOf err:%v", w.chain, err)
+					continue
+				}
+				balance = new(big.Int).SetBytes(balanceByte)
+			} else {
+				balance, err = client.BalanceAt(w.ctx, account, nil)
+				if err != nil {
+					log.Printf("[%s] BalanceAt err:%v", w.chain, err)
+					continue
+				}
 			}
 			if balance.Uint64() <= uint64(w.threshold) {
 				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%d, threshold:%d", w.chain, account.Hex(), balance.Uint64(), w.threshold))
@@ -82,4 +97,19 @@ func (w *Eth) Start() (err error) {
 
 		w.i++
 	}
+}
+
+func getBalanceMsg(token, account common.Address) ethereum.CallMsg {
+	balanceOfSig := "70a08231" //balanceOf
+
+	method, _ := hex.DecodeString(balanceOfSig)
+	zero, _ := hex.DecodeString(strings.Repeat("0", 24))
+	method = append(method, zero...)
+	method = append(method, account[:]...)
+
+	msg := ethereum.CallMsg{}
+	msg.To = &token
+	msg.Data = method
+
+	return msg
 }

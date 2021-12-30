@@ -11,6 +11,7 @@ type Account struct {
 	Ont     []string
 	Zil     []string
 	Neo     []string
+	Metis   []string
 }
 
 // Threshold ...
@@ -24,6 +25,7 @@ type Threshold struct {
 	Neo     uint
 	OK      uint
 	Arb     uint
+	Metis   uint
 }
 
 // Node ...
@@ -37,6 +39,7 @@ type Node struct {
 	Zil     []string
 	Neo     []string
 	Polygon []string
+	Metis   []string
 }
 
 // Config ...
