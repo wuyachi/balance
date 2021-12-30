@@ -14,10 +14,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-const (
-	balanceOfSig = "70a08231"
-)
-
 // Eth ...
 type Eth struct {
 	ctx        context.Context
@@ -70,17 +66,7 @@ func (w *Eth) Start(tokens ...string) (err error) {
 		for _, account := range w.accounts {
 			var balance *big.Int
 			if len(tokens) > 0 {
-				token := common.HexToAddress(tokens[0])
-
-				method, _ := hex.DecodeString(balanceOfSig)
-				zero, _ := hex.DecodeString(strings.Repeat("0", 24))
-				method = append(method, zero...)
-				method = append(method, account[:]...)
-
-				msg := ethereum.CallMsg{}
-				msg.To = &token
-				msg.Data = method
-
+				msg := getBalanceMsg(common.HexToAddress(tokens[0]), account)
 				balanceByte, err := client.CallContract(context.Background(), msg, nil)
 				if err != nil {
 					log.Printf("[%s] BalanceOf err:%v", w.chain, err)
@@ -111,4 +97,19 @@ func (w *Eth) Start(tokens ...string) (err error) {
 
 		w.i++
 	}
+}
+
+func getBalanceMsg(token, account common.Address) ethereum.CallMsg {
+	balanceOfSig := "70a08231" //balanceOf
+
+	method, _ := hex.DecodeString(balanceOfSig)
+	zero, _ := hex.DecodeString(strings.Repeat("0", 24))
+	method = append(method, zero...)
+	method = append(method, account[:]...)
+
+	msg := ethereum.CallMsg{}
+	msg.To = &token
+	msg.Data = method
+
+	return msg
 }
