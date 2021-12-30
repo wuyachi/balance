@@ -131,12 +131,23 @@ func watch(ctx *cli.Context) (err error) {
 	}
 
 	if len(conf.Account.Neo) > 0 {
-		zil := watchPkg.NewNeo(wctx, cancelFunc, "Neo", conf.Node.Neo, conf.Account.Neo, conf.Threshold.Neo)
-		zil.SetAlarm(onAlarm)
+		neo := watchPkg.NewNeo(wctx, cancelFunc, "Neo", conf.Node.Neo, conf.Account.Neo, conf.Threshold.Neo)
+		neo.SetAlarm(onAlarm)
 		util.GoFunc(&wg, func() {
-			err := zil.Start()
+			err := neo.Start()
 			if err != nil {
 				log.Printf("Neo watcher quits:%v", err)
+			}
+		})
+	}
+
+	if len(conf.Account.Metis) > 0 {
+		metis := watchPkg.NewEth(wctx, cancelFunc, "Metis", conf.Node.Metis, conf.Account.Metis, conf.Threshold.Metis)
+		metis.SetAlarm(onAlarm)
+		util.GoFunc(&wg, func() {
+			err := metis.Start("deaddeaddeaddeaddeaddeaddeaddeaddead0000")
+			if err != nil {
+				log.Printf("Metis watcher quits:%v", err)
 			}
 		})
 	}
