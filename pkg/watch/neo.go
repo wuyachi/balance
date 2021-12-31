@@ -48,7 +48,8 @@ func (w *Neo) Start() (err error) {
 	}
 
 	defer w.cancelFunc()
-
+	//neo hasn`t precision
+	neoThreshold := float64(w.threshold) / 100
 	for {
 
 		helper := w.helpers[w.i%len(w.helpers)]
@@ -59,11 +60,11 @@ func (w *Neo) Start() (err error) {
 				log.Printf("[%s] GetBalance err:%v", w.chain, err)
 				continue
 			}
-			if gasBalance <= float64(w.threshold) {
-				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%v, threshold:%d", w.chain, account, gasBalance, w.threshold))
+			if gasBalance*100 <= neoThreshold {
+				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%v, threshold:%v", w.chain, account, gasBalance, neoThreshold))
 				continue
 			}
-			log.Printf("[%s] account %s: balance:%v threshold:%d", w.chain, account, gasBalance, w.threshold)
+			log.Printf("[%s] account %s: balance:%v threshold:%v", w.chain, account, gasBalance, neoThreshold)
 		}
 		time.Sleep(time.Second)
 

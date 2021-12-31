@@ -81,7 +81,7 @@ func (w *Eth) Start(tokens ...string) (err error) {
 				}
 			}
 			if balance.Uint64() <= uint64(w.threshold) {
-				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%d, threshold:%d", w.chain, account.Hex(), balance.Uint64(), w.threshold))
+				w.onAlarm(fmt.Sprintf("[%s] account %s is out of balance, balance:%v, threshold:%v", w.chain, account.Hex(), float64(balance.Uint64())/1000000000000000000, float64(w.threshold)/1000000000000000000))
 				continue
 			}
 			log.Printf("[%s] account %s: balance:%d threshold:%d", w.chain, account.Hex(), balance.Uint64(), w.threshold)
